@@ -1,19 +1,19 @@
 package entity
 
 type Model struct {
-	Name     string
-	MaxToken int
+	Name      string
+	MaxTokens int
 }
 
-func NewModel(name string, maxToken int) *Model {
+func NewModel(name string, maxTokens int) *Model {
 	return &Model{
-		Name:     name,
-		MaxToken: maxToken,
+		Name:      name,
+		MaxTokens: maxTokens,
 	}
 }
 
-func (m *Model) GetMaxToken() int {
-	return m.MaxToken
+func (m *Model) GetMaxTokens() int {
+	return m.MaxTokens
 }
 
 func (m *Model) GetModelName() string {

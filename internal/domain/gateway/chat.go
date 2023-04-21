@@ -8,6 +8,6 @@ import (
 
 type ChatGateway interface {
 	CreateChat(ctx context.Context, chat *entity.Chat) error
-	FindChatById(ctx context.Context, chatId string) (*entity.Chat, error)
+	FindChatById(ctx context.Context, chatID string) (*entity.Chat, error)
 	SaveChat(ctx context.Context, chat *entity.Chat) error
 }

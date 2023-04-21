@@ -9,24 +9,24 @@ import (
 )
 
 type Message struct {
-	ID       string
-	Role     string
-	Content  string
-	Tokens   int
-	Model    *Model
-	CreateAt time.Time
+	ID        string
+	Role      string
+	Content   string
+	Tokens    int
+	Model     *Model
+	CreatedAt time.Time
 }
 
 func NewMessage(role, content string, model *Model) (*Message, error) {
 	totalTokens := tiktoken_go.CountTokens(model.GetModelName(), content)
 
 	msg := &Message{
-		ID:       uuid.New().String(),
-		Role:     role,
-		Content:  content,
-		Tokens:   totalTokens,
-		Model:    model,
-		CreateAt: time.Now(),
+		ID:        uuid.New().String(),
+		Role:      role,
+		Content:   content,
+		Tokens:    totalTokens,
+		Model:     model,
+		CreatedAt: time.Now(),
 	}
 
 	if err := msg.Validate(); err != nil {
@@ -45,7 +45,7 @@ func (m *Message) Validate() error {
 		return errors.New("empty content")
 	}
 
-	if m.CreateAt.IsZero() {
+	if m.CreatedAt.IsZero() {
 		return errors.New("invalid create at")
 	}
 
