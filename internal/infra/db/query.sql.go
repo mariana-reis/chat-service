@@ -106,12 +106,12 @@ func (q *Queries) DeleteErasedChatMessages(ctx context.Context, chatID string) e
 	return err
 }
 
-const findChatByID = `-- name: FindChatByID :one
+const FindChatByID = `-- name: FindChatByID :one
 SELECT id, user_id, initial_message_id, status, token_usage, model, model_max_tokens, temperature, top_p, n, stop, max_tokens, presence_penalty, frequency_penalty, created_at, updated_at FROM chats WHERE id = ?
 `
 
 func (q *Queries) FindChatByID(ctx context.Context, id string) (Chat, error) {
-	row := q.db.QueryRowContext(ctx, findChatByID, id)
+	row := q.db.QueryRowContext(ctx, FindChatByID, id)
 	var i Chat
 	err := row.Scan(
 		&i.ID,
